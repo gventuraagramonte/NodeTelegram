@@ -4,7 +4,8 @@
   "description": "server.js",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [
     "chat",
@@ -12,5 +13,16 @@
     "server"
   ],
   "author": "@gventuraAG",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gventuraagramonte/NodeTelegram.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gventuraagramonte/NodeTelegram/issues"
+  },
+  "homepage": "https://github.com/gventuraagramonte/NodeTelegram#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
 }

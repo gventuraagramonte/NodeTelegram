@@ -1,5 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+
+const db = require('./db');
+
+db('mongodb://localhost/telegram');
 //Con Router, podremos separar cabeceras, podemos gestionar peticiones
 const router = require('./network/routes');
 

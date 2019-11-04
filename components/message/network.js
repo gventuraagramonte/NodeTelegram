@@ -7,11 +7,13 @@ const router = express.Router();
 
 //la ruta que queremos que escuche
 router.get('/', function(req, res){
-    console.log(req.headers);
-    res.header({
-        "custom-header":"nuestro valor personalizado",
-    });
-    response.success(req, res, 'Lista de mensajes');
+    controller.getMessages()
+        .then((messageList)=>{
+            response.success(req, res, messageList, 200);
+        })
+        .catch(e=>{
+            response.error(req, res, 'Unexpected Error', 500, e);
+        })
 });
 
 //la ruta que queremos que le envie una respuesta
