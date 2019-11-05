@@ -1,7 +1,12 @@
 const express = require('express');
+const multer = require('multer');//Para trabajar con imagenes
 const response = require('../../network/response');
 const controller = require('./controller');
 const router = express.Router();
+
+const upload = multer({
+    dest:'public/files/',
+});
 
 
 
@@ -19,9 +24,11 @@ router.get('/', function(req, res){
 });
 
 //la ruta que queremos que le envie una respuesta
-router.post('/', function(req, res){
+router.post('/',upload.single('file'), function(req, res){
     
-    controller.addMessage(req.body.user, req.body.message)
+    console.log(req.file);
+
+    controller.addMessage(req.body.chat,req.body.user, req.body.message, req.file)
         .then((fullMessage)=>{
             response.success(req, res, fullMessage,201);
         })

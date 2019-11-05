@@ -13,14 +13,14 @@ function addMessage(message){
     const myMessage = new Model(message);
     myMessage.save();
 }
-
+//Aqui se hace la relacion entre dos bases de datos
 async function getMessage(filterUser){
     return new Promise((resolve, reject)=>{
         let filter = {};
         if(filterUser !== null){
             filter = { user:filterUser };
         }
-        const messages = Model.find(filter)
+        Model.find(filter)
             .populate('user')
             .exec((error,populated)=>{
                 if(error){
