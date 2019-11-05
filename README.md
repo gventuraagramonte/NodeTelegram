@@ -1,1 +1,2 @@
 # NodeTelegram
+El contenido de este repositorio es una aplicación en NodeJS, que emula el funcionamiento de Telegram, enviando, listando, actualizando y borrando datos, esto se une a una base de datos de Mongo DB.
