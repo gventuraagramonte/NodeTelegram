@@ -1,16 +1,22 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const app = express();
+const server = require('http').Server(app);
 
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const socket = require('./socket');
 const db = require('./db');
+const router = require('./network/routes');
 
 db('mongodb://localhost/telegram');
 //Con Router, podremos separar cabeceras, podemos gestionar peticiones
-const router = require('./network/routes');
 
+app.use(cors());
 
-var app = express();
 app.use(bodyParser.json());
 //app.use(router);
+
+socket.connect(server);
 
 router(app);
 
@@ -21,5 +27,6 @@ app.use('/app', express.static('public'));
 //     res.send('Hola');
 // })
 
-app.listen(3004);
-console.log('La aplicacion está escuchando es localhost:3004');
+server.listen(3004, function(){
+    console.log('La aplicacion está escuchando es localhost:3004');
+});
